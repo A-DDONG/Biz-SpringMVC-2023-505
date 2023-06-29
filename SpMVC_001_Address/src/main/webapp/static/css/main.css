@@ -1,0 +1,68 @@
+@charset "UTF-8";
+
+@import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
+@font-face {
+    font-family: 'KBO-Dia-Gothic_bold';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/KBO-Dia-Gothic_bold.woff') format('woff');
+    font-weight: 700;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'SBAggroB';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'GangwonEduPowerExtraBoldA';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduPowerExtraBoldA.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+* {
+	box-sizing: border;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	width: 100vw;
+	height: 100vh;
+}
+a {
+	text-decoration: none;
+}
+body {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;	
+}
+
+header {
+	background-color: green;
+	color: white;
+	padding:1.2rem;
+	text-align: center;
+	text-shadow: 3px 3px 3px black;
+	font-family: SBAggroB;
+	font-size: 30px;
+}
+
+section.main {
+	flex:1;
+	margin:3px;
+	padding:3px;
+	border:1px solid blue;
+}
+footer {
+	background-color: #ddd;
+	text-align: center;
+	padding:0.7rem;
+	color:#888;
+	text-shadow:1px 1px 1px #eee;
+ 	font-family: NanumBarunGothic;
+}
+
