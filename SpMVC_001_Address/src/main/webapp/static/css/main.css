@@ -2,67 +2,88 @@
 
 @import url(//fonts.googleapis.com/earlyaccess/nanumgothic.css);
 @font-face {
-    font-family: 'KBO-Dia-Gothic_bold';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/KBO-Dia-Gothic_bold.woff') format('woff');
-    font-weight: 700;
-    font-style: normal;
+  font-family: "KBO-Dia-Gothic_bold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/KBO-Dia-Gothic_bold.woff")
+    format("woff");
+  font-weight: 700;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'SBAggroB';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "SBAggroB";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
 @font-face {
-    font-family: 'GangwonEduPowerExtraBoldA';
-    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduPowerExtraBoldA.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
+  font-family: "GangwonEduPowerExtraBoldA";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2201-2@1.0/GangwonEduPowerExtraBoldA.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
 }
-
-
+@font-face {
+  font-family: "MaplestoryOTFBold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-04@2.1/MaplestoryOTFBold.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
 * {
-	box-sizing: border;
-	margin: 0;
-	padding: 0;
+  box-sizing: border;
+  margin: 0;
+  padding: 0;
 }
 
 html {
-	width: 100vw;
-	height: 100vh;
+  width: 100vw;
+  height: 100vh;
 }
 a {
-	text-decoration: none;
+  text-decoration: none;
 }
 body {
-	width: 100%;
-	height: 100%;
-	display: flex;
-	flex-direction: column;	
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
 
 header {
-	background-color: green;
-	color: white;
-	padding:1.2rem;
-	text-align: center;
-	text-shadow: 3px 3px 3px black;
-	font-family: SBAggroB;
-	font-size: 30px;
+  background-color: green;
+  /* background-image: url("https://www.shutterstock.com/image-photo/emperor-penguin-children-antarctic-260nw-107424374.jpg"); */
+  background-image: url("../images/IMG_9566.gif");
+  background-size: 1920px 400px;
+  background-position-y: -100px;
+  color: #ffe200;
+  padding: 1.2rem;
+  text-align: center;
+  text-shadow: 3px 3px 3px black;
+  font-family: SBAggroB;
+  font-size: 30px;
 }
 
 section.main {
-	flex:1;
-	margin:3px;
-	padding:3px;
-	border:1px solid blue;
+  flex: 1;
+  margin: 3px;
+  padding: 3px;
+  border: 1px solid blue;
+  /*
+	box 범위 내에서 content 를 Scroll 하면서 보여주기
+	overflow:auto;
+		범위 내에서 content 가 있으면 scroll 없이 보여주기
+	overflow:hidden;
+		범위를 벗어나는 content 는 잘라버리기
+	overflow:scroll;
+		항상 scroll 막대를 보여주기
+  */
+  overflow: auto;
 }
 footer {
-	background-color: #ddd;
-	text-align: center;
-	padding:0.7rem;
-	color:#888;
-	text-shadow:1px 1px 1px #eee;
- 	font-family: NanumBarunGothic;
+  background-color: #ddd;
+  text-align: center;
+  padding: 0.7rem;
+  color: #888;
+  text-shadow: 1px 1px 1px #eee;
+  font-family: NanumBarunGothic;
 }
-

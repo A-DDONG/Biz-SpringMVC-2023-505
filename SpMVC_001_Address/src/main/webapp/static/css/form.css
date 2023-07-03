@@ -14,7 +14,7 @@ form.main legend {
   margin: 20px;
   /* 제목 box 의 여백 주기*/
   padding: 20px;
-  font-family: SBAggroB;
+  font-family: "SBAggroB";
   font-size: 2rem;
   font-weight: 900;
   color: rgb(33 100 255 / 85%);
@@ -69,8 +69,12 @@ form.main div:last-of-type {
   text-align: right;
   padding: 8px 0;
 }
+form.main button {
+  color: white;
+  text-shadow: 1px 1px 1px black;
+}
 form.main div:last-of-type button {
-  font-family: SBAggroB;
+  font-family: "MaplestoryOTFBold";
   border: none;
   outline: none;
   margin-right: 10px;
@@ -84,9 +88,10 @@ form.main div:last-of-type button:hover {
 }
 button.list {
   background-color: orange;
-  color: black;
 }
 button.input {
   background-color: rgb(245, 96, 92);
-  color: black;
+}
+form.main.update button.input {
+  background-color: rgb(132, 216, 255);
 }

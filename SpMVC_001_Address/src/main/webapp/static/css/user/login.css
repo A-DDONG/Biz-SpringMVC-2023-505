@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+form.user.login legend {
+  font-family: "MaplestoryOTFBold";
+  font-size: 40px;
+  text-align: center;
+}
+form.user.login {
+  width: 40%;
+  margin: 20px auto;
+}
+form.user.login fieldset {
+  border: 1px solid blue;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 300px;
+}
+
+form.user.login input,
+form.user.login button {
+  width: 280px;
+  border-radius: 25px;
+  outline: none;
+  border: none;
+  transition: 0.8s;
+  padding: 8px;
+}
+form.user.login input {
+  border: 1px solid #ddd;
+  margin-bottom: 10px;
+}
+form.user.login input:focus {
+  width: 320px;
+}
+form.user.login button {
+  background-color: black;
+  color: white;
+  cursor: pointer;
+}
+form.user.login button:hover {
+  width: 320px;
+}
+form.user.login div.error {
+  margin-bottom: 10px;
+}
+form.user.login h3 {
+  color: red;
+  font-family: NanumBarunGothic;
+}

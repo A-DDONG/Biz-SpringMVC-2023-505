@@ -3,7 +3,6 @@ package com.addong.address.controller;
 import java.util.List;
 import java.util.Locale;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -11,8 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.addong.address.dao.AddrDao;
 import com.addong.address.models.AddrDto;
+import com.addong.address.service.AddrService;
 
 /*
  * Controller class
@@ -22,14 +21,17 @@ import com.addong.address.models.AddrDto;
  */
 @Controller
 public class HomeController {
-
-	@Autowired
-	protected AddrDao addrDao;
+	
+	protected final AddrService addrService;
+	
+	public HomeController(AddrService addrService) {
+		this.addrService = addrService;
+	}
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	public String home(Locale locale, Model model) {
 
-		List<AddrDto> addrList = addrDao.selectAll();
+		List<AddrDto> addrList = addrService.selectAll();
 		model.addAttribute("ADDRS", addrList);
 
 		return "home";
@@ -38,7 +40,7 @@ public class HomeController {
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	@ResponseBody
 	public List<AddrDto> List() {
-		List<AddrDto> addrList = addrDao.selectAll();
+		List<AddrDto> addrList = addrService.selectAll();
 		return addrList;
 	}
 
@@ -67,14 +69,24 @@ public class HomeController {
 	 * Controller 의 method 에 @ResponseBody Annotation 이 부착되면 문자열을 그대로(direct) Client
 	 * 로 Response 하라 라는 의미
 	 */
-	@ResponseBody
+//	@ResponseBody
 //	public String insert(String a_id, String a_name, String a_tel, String a_addr, Model model) {
 //		return String.format("이름: %s, 전화번호 : %s, 주소 : %s,", a_name, a_tel, a_addr);
 //		
 //	}
 	public String insert(@ModelAttribute AddrDto addrDto) {
-		return String.format("이름: %s, 전화번호 : %s, 주소 : %s,", addrDto.getA_name(), addrDto.getA_tel(),
-				addrDto.getA_addr());
+		
+		addrService.insert(addrDto);
+		
+		/*
+		 * 데이터를 만들고 view 를 생성하여 client 에게 response 하는 URL 이 이미 있기 떄문에
+		 * client야 번거롭지만 한번더 요청해주라
+		 */
+		return "redirect:/";
+		
+		
+//		return String.format("이름: %s, 전화번호 : %s, 주소 : %s,", addrDto.getA_name(), addrDto.getA_tel(),
+//				addrDto.getA_addr());
 	}
 
 	@RequestMapping(value = "/insert/test", method = RequestMethod.GET)
@@ -86,13 +98,70 @@ public class HomeController {
 	@RequestMapping(value = "/id_check", method = RequestMethod.GET)
 	@ResponseBody
 	public String idCheck(String id) {
-		AddrDto addrDto = addrDao.findById(id);
-		if (addrDto == null) {
-			return "OK";
-//		} else if(addrDto.getA_id().equals(id) ) {
+		return addrService.idCheck(id);
+//		AddrDto addrDto = addrService.findById(id);
+//		if (addrDto == null) {
+//			return "OK";
+////		} else if(addrDto.getA_id().equals(id) ) {
+////			return "FAIL";
+//		} else {
 //			return "FAIL";
+//		}
+		
+	}
+	
+	/*
+	 * localhost:8080/addr/detail?id=A0001 형식으로 request 가 오면
+	 * id=A0001 에 설정된 A0001 값을 id 매개변수로 받는다
+	 * 
+	 * 		URL : localhost:8080/addr/detail
+	 * 		queryString : ?id=A0001
+	 */
+	@RequestMapping(value="/detail",method=RequestMethod.GET)
+	public String detail(String id, Model model) {
+		
+		// request 에 설정된 id 값으로 DB table 에서 주소 정보를 SELECT 
+		AddrDto addrDto = addrService.findById(id);
+		
+		// SELECT 된 주소를 model 에 담아서 view 로 전달
+		model.addAttribute("ADDR",addrDto);
+		
+		// home.jsp 에 include 되어 보여질 화면(변수) 세팅 
+		model.addAttribute("BODY","DETAIL");
+		return "home";
+	}
+	@RequestMapping(value="/delete",method=RequestMethod.GET)
+	public String delete(String id) {
+		int result = addrService.delete(id);
+		if(result > 0) {
+			return "redirect:/";
 		} else {
-			return "FAIL";
+			// 삭제에 실패했을 경우
+			// 현재 id 의 detail 화면으로 되돌아가라
+			return "redirect:/detail?id=" + id;
+		}
+	}
+	// 데이터 update 할 화면 보여주기
+	// Spring 에서는 RequestMapping 을 참조하여 update GETTER method 라고 부른다
+	@RequestMapping(value="/update",method=RequestMethod.GET)
+	public String update(String id,Model model) {
+		
+		// 변경할 주소 데이터 SELECT 하여 model 에 담기
+		AddrDto addrDto = addrService.findById(id);
+		model.addAttribute("ADDR",addrDto);
+		model.addAttribute("BODY","UPDATE");
+		return "home";
+	}
+	@RequestMapping(value="/update",method=RequestMethod.POST)
+	public String update(@ModelAttribute AddrDto addrDto) {
+		int result = addrService.update(addrDto);
+		String id = addrDto.getA_id();
+		// update가 성공하면 detail 화면을 보여서 변경 된것을 확인
+		if(result > 0) {
+			return "redirect:/detail?id=" + id;
+		// update 가 실패하면 다시 update 화면으로 보내서 다시 변경하기
+		} else {
+			return "reditect:/update?id=" + id;
 		}
 	}
 
