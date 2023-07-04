@@ -1,51 +1,86 @@
 @charset "UTF-8";
 
-form.user.login legend {
-  font-family: "MaplestoryOTFBold";
-  font-size: 40px;
-  text-align: center;
-}
+/*
+width : 초기에 보이는 box 의 폭
+min-width : 화면의 폭이 줄어들때 현재 box 의 최소 크기 유지
+          화면이 줄어들어도 login box 의 크기는 최소 400px 을 유지하라
+width < min-width : width 가 min-width 보다 작으면 width 값은 무시
+*/
 form.user.login {
-  width: 40%;
+  width: 25%;
   margin: 20px auto;
+  min-width: 300px;
 }
 form.user.login fieldset {
-  border: 1px solid blue;
+  border: 3px solid rgb(50, 50, 50);
+  border-radius: 15px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  height: 300px;
+  height: 400px;
+}
+/*
+자식 요소 selector
+  부모 자식
+  부모 + 자식
+  부모 > 자식
+*/
+form.user.login legend {
+  font-family: "MaplestoryOTFBold";
+  font-size: 3rem;
+  text-align: center;
+  /* html 에 저장된 font 의 크기를 기준으로 배율조정*/
+  /* 1rem : 16px x 1 정도, 1.2rem 16px x 1.2 정도*/
+  padding: 1rem;
 }
 
+form.user.login.div,
 form.user.login input,
 form.user.login button {
-  width: 280px;
+  /* calc :  width, height 등을 표현할때 계산식으로 표기하는 방법 */
+  /* css3에서 제공되는함수*/
+  /* width 를 부모(form) 의 100%보다 150px 만큼 작게*/
+  width: calc(100% - 150px);
   border-radius: 25px;
   outline: none;
   border: none;
   transition: 0.8s;
-  padding: 8px;
+  padding: 12px;
+  margin: 5px;
 }
 form.user.login input {
   border: 1px solid #ddd;
-  margin-bottom: 10px;
+  /* margin-bottom: 10px; */
 }
 form.user.login input:focus {
-  width: 320px;
+  width: calc(100% - 100px);
 }
 form.user.login button {
   background-color: black;
   color: white;
   cursor: pointer;
+  margin-bottom: 3.5rem;
+  margin-top: 1.5rem;
 }
 form.user.login button:hover {
-  width: 320px;
+  width: calc(100% - 100px);
 }
 form.user.login div.error {
+  display: flex;
   margin-bottom: 10px;
+  border-radius: 25px;
+  color: rgb(255, 0, 0);
+  padding: 8px;
+  margin: 5px;
+  /* background-color: rgb(50, 50, 50); */
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-family: "MaplestoryOTFBold";
+  font-size: 20px;
 }
-form.user.login h3 {
+/* form.user.login h3 {
   color: red;
   font-family: NanumBarunGothic;
-}
+} */
