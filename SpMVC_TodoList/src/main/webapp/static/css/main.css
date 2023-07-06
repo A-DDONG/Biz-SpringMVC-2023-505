@@ -1,0 +1,86 @@
+@charset "UTF-8";
+@font-face {
+  font-family: "SBAggroB";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2108@1.1/SBAggroB.woff")
+    format("woff");
+  font-weight: normal;
+  font-style: normal;
+}
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+html {
+  width: 100vw;
+  height: 100vh;
+}
+body {
+  width: 100%;
+  height: 100%;
+}
+
+div.main.title {
+  display: flex;
+  padding-top: 30px;
+  justify-content: center;
+}
+
+div.main.title h1 {
+  text-align: center;
+  font-size: 50px;
+  font-family: "SBAggroB";
+  background-color: rgb(245, 96, 92);
+  color: white;
+  text-shadow: 2px 2px 2px black;
+  padding: 10px 30px 10px 30px;
+}
+
+.head_tab {
+  display: flex;
+  width: 50%;
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.todo {
+  padding: 10px;
+  margin: 10px;
+}
+
+.todo.date {
+  flex: 1;
+}
+.todo.time {
+  flex: 1;
+}
+.todo.memo {
+  flex: 3;
+}
+
+table {
+  width: 80%;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+table.main.list tr:nth-of-type(1) {
+  background-color: rgb(245, 96, 92);
+  color: white;
+  height: 3rem;
+}
+table.main.list th {
+  border-top: 1px solid #000000;
+}
+table.main.list th,
+table.main.list td {
+  text-align: left;
+  padding: 5px 8px;
+  border-bottom: 1px solid #888;
+  border-right: 1px solid #888;
+}
+table.main.list th:nth-of-type(3),
+table.main.list td:nth-of-type(3) {
+  border-right: none;
+}

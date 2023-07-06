@@ -7,8 +7,10 @@ import org.springframework.stereotype.Service;
 
 import com.addong.address.dao.AddrDao;
 import com.addong.address.dao.BuyerDao;
+import com.addong.address.dao.HobbyDao;
 import com.addong.address.dao.ScoreDao;
 import com.addong.address.models.AddrDto;
+import com.addong.address.models.HobbyByAidVO;
 import com.addong.address.service.AddrService;
 
 @Service
@@ -52,10 +54,16 @@ public class AddServiceImplV1 implements AddrService {
 	 * 
 	 */
 	protected final AddrDao addrDao;
-	public AddServiceImplV1(AddrDao addrDao) {
-		this.addrDao = addrDao;
-	}
 	
+	protected final HobbyDao hobbyDao;
+	
+	
+	
+	public AddServiceImplV1(AddrDao addrDao, HobbyDao hobbyDao) {
+		this.addrDao = addrDao;
+		this.hobbyDao = hobbyDao;
+	}
+
 	protected ScoreDao scoreDao;
 	/*
 	 * setter 의존성 주입(Setter DI)
@@ -79,9 +87,20 @@ public class AddServiceImplV1 implements AddrService {
 
 	@Override
 	public AddrDto findById(String id) {
-		// TODO Auto-generated method stub
-		return addrDao.findById(id);
+		
+		// id 에 해당하는 주소 조회
+		AddrDto addrDto = addrDao.findById(id);
+		
+		// id 에 해당하는 취미 리스트 조회
+		List<HobbyByAidVO> hobbyList = hobbyDao.findHobbyByAID(id);
+		
+		// 주소 객체에 취미 리스트 포함
+		addrDto.setHobbyList(hobbyList);
+		
+		// 주소 객체 return
+		return addrDto;
 	}
+	
 
 	@Override
 	public String idCheck(String id) {
