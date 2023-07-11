@@ -1,0 +1,7 @@
+@charset "UTF-8";
+.detail.box {
+  display: flex;
+}
+.detail.box p {
+  border: 1px solid #777;
+}
