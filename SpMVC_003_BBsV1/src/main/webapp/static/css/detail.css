@@ -5,3 +5,11 @@
 .detail.box p {
   border: 1px solid #777;
 }
+.detail.box.box1 {
+  flex: 1;
+  width: 70px;
+}
+.detail.box.box2 {
+  flex: 3;
+  width: 300px;
+}

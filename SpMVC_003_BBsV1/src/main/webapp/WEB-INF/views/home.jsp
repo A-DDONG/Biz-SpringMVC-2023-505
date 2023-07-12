@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <c:set value="${pageContext.request.contextPath}" var="rootPath"/>   
-<c:set value="2023-07-11-017" var="version" />
+<c:set value="2023-07-11-020" var="version" />
 <!DOCTYPE html>
 <html>
 <head>
