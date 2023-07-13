@@ -10,7 +10,7 @@
 <link href="${rootPath}/static/css/input.css?20230712-002" rel="stylesheet">
 </head>
 <body>
-	<form class="main" method="POST">
+	<form class="main" method="POST" enctype="multipart/form-data">
 		<div><label>작성일자</label><input name="b_date" /></div>
 		<div><label>작성시각</label><input name="b_time" /></div>
 		<div><label>작성자</label><input name="b_username" /></div>
@@ -20,6 +20,10 @@
 		<div class="button-box"><button>저장하기</button></div>
 			
 	</form>
+	
+	<div>
+		<img src="${rootPath}/files/${FILE_NAME}" width="1920px">
+	</div>
 
 </body>
 </html>
