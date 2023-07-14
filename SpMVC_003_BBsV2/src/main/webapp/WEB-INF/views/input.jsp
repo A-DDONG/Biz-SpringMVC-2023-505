@@ -22,7 +22,7 @@
 	</form>
 	
 	<div>
-		<img src="${rootPath}/files/${FILE_NAME}" width="1920px">
+		<img src="${rootPath}/files/${FILE_NAME}" width="100px">
 	</div>
 
 </body>
