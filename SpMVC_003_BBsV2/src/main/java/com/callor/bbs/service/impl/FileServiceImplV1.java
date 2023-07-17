@@ -1,7 +1,7 @@
 package com.callor.bbs.service.impl;
 
 import java.io.File;
-import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.core.io.Resource;
@@ -11,6 +11,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.callor.bbs.config.QualifierConfig;
+import com.callor.bbs.models.FileDto;
 import com.callor.bbs.service.FileService;
 
 import lombok.extern.slf4j.Slf4j;
@@ -59,10 +60,22 @@ public class FileServiceImplV1 implements FileService {
 	}
 
 	@Override
-	public List<String> filesUp(MultipartHttpServletRequest files) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
+	public List<FileDto> filesUp(MultipartHttpServletRequest files) throws Exception {
+
+		List<MultipartFile> fileList = files.getFiles("b_image");
+		
+		List<FileDto> returnFiles = new ArrayList<FileDto>();
+		for(MultipartFile file : fileList) {
+			FileDto fileDto = new FileDto();
+			fileDto.setI_originalName(file.getOriginalFilename());
+			fileDto.setI_uploadName(this.fileUp(file));
+			returnFiles.add(fileDto);
+		}
+		return returnFiles;
+			
+		}
+		
+
 
 	@Override
 	public String Delete(String fileName) {

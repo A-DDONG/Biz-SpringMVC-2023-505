@@ -1,5 +1,18 @@
 @charset "UTF-8";
-
+@font-face {
+  font-family: "iceSotong-Rg";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2307-2@1.0/iceSotong-Rg.woff2")
+    format("woff2");
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: "OAGothic-ExtraBold";
+  src: url("https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.0/OAGothic-ExtraBold.woff2")
+    format("woff2");
+  font-weight: 800;
+  font-style: normal;
+}
 * {
   box-sizing: border-box;
   margin: 0;
@@ -17,25 +30,48 @@ body {
 
 header.main {
   text-align: center;
+  font-family: "iceSotong-Rg";
+  font-size: 50px;
+  margin-top: 25px;
 }
-
+header.main h1 {
+  width: 60%;
+  margin: 0 auto;
+  color: orangered;
+  background-color: #8ecadb;
+}
+.container {
+  width: 60%;
+  background-color: #fff3e7;
+  margin: 0 auto;
+  padding-top: 80px;
+  padding-bottom: 80px;
+}
 table.main {
-  width: 60%;
-  margin: 10px auto;
+  width: 80%;
+  margin: 0 auto;
+  font-family: "OAGothic-ExtraBold";
 }
-
+table.main tr td {
+  text-align: center;
+}
+table.main tr:first-of-type {
+  background-color: #b5d7ff;
+}
 div.main.button-box {
-  width: 60%;
+  width: 80%;
   margin: 10px auto;
   text-align: right;
+  margin-top: 30px;
 }
 
 div.main.button-box a {
   text-decoration: none;
-  color: white;
-  background-color: blue;
+  color: orangered;
+  background-color: #b5d7ff;
   display: inline-block;
   padding: 12px 16px;
+  font-family: "OAGothic-ExtraBold";
 }
 
 div.main.button-box a:hover {

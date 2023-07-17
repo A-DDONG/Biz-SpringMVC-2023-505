@@ -6,42 +6,44 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>이미지 겔러리</title>
-<link href="${rootPath }/static/css/main.css?2023-07-11-002" rel="stylesheet">
+<title>이미지 갤러리</title>
+<link href="${rootPath }/static/css/main.css?2023-07-11-011" rel="stylesheet">
 
 </head>
 <body>
 	<header class="main">
-	<h1>이미지 겔러리</h1>
+		<h1>이미지 갤러리</h1>
 	</header>
-	<table class="main">
-		<tr>
-			<th>SEQ</th>
-			<th>작성시각</th>
-			<th>작성일자</th>
-			<th>작성자</th>
-			<th>제목</th>
-			<th>조회수</th>
-		</tr>
-		<c:forEach items="${BBS_LIST}" var="BBS">
+	<div class="container">
+		<table class="main">
 			<tr>
-				<td>${BBS.b_seq}</td>
-				<td>${BBS.b_date}</td>
-				<td>${BBS.b_time}</td>
-				<td>
-				<a href="${rootPath}/search/user?username=${BBS.b_username}">
-					${BBS.nickname}
-				</a>
-				</td>
-				<td>
-				<a href="${rootPath}/detail?seq=${BBS.b_seq}">${BBS.b_subject}</a>
-				</td>
-				<td>${BBS.b_count}</td>
+				<th>SEQ</th>
+				<th>작성시각</th>
+				<th>작성일자</th>
+				<th>작성자</th>
+				<th>제목</th>
+				<th>조회수</th>
 			</tr>
-		</c:forEach>
-	</table>
-	<div class="main button-box">
-		<a href="${rootPath}/insert">추가하기</a>
+			<c:forEach items="${BBS_LIST}" var="BBS">
+				<tr>
+					<td>${BBS.b_seq}</td>
+					<td>${BBS.b_date}</td>
+					<td>${BBS.b_time}</td>
+					<td>
+					<a href="${rootPath}/search/user?username=${BBS.b_username}">
+						${BBS.nickname}
+					</a>
+					</td>
+					<td>
+					<a href="${rootPath}/detail?seq=${BBS.b_seq}">${BBS.b_subject}</a>
+					</td>
+					<td>${BBS.b_count}</td>
+				</tr>
+			</c:forEach>
+		</table>
+		<div class="main button-box">
+			<a href="${rootPath}/insert">추가하기</a>
+		</div>
 	</div>
 </body>
 </html>
