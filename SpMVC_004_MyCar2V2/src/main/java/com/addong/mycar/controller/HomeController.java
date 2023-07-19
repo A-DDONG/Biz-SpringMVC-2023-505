@@ -2,8 +2,10 @@ package com.addong.mycar.controller;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -27,14 +29,17 @@ public class HomeController {
 
 	@RequestMapping(value = "/", method = RequestMethod.GET)
 	// carDto 전달위해 모델어트리뷰트 반드시 필요
-	public String home(@ModelAttribute("CAR") CarDto carDto) {
+	public String home(@ModelAttribute("CAR") CarDto carDto, Model model) {
 		log.debug("나는 바보다");
-		return "home";
+		List<CarDto> carList = carService.selectAll();
+		model.addAttribute("CAR_LIST",carList);
+		return "car/input";
 	}
 	
 	@RequestMapping(value="/input",method=RequestMethod.POST)
 	public String input(@ModelAttribute("CAR") CarDto carDto) {
 		
+		int result = carService.insert(carDto);
 		return "redirect:/";
 	}
 	
@@ -61,7 +66,7 @@ public class HomeController {
 	public CarDto carDto() {
 		Date date = new Date(System.currentTimeMillis());
 		SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
-		SimpleDateFormat timeFormat = new SimpleDateFormat("HH-mm-ss");
+		SimpleDateFormat timeFormat = new SimpleDateFormat("HH:mm:ss");
 		
 		String strDate = dateFormat.format(date);
 		String strTime = timeFormat.format(date);

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html
+  lang="ko"
+  xmlns:layout="http://www.ultraq.net.nz/thymeleat/layout"
+  layout:decorate="~{/home}"
+>
+  <header class="main" th:fragmaent="header">
+    <h1>MY CAR</h1>
+    <div class="title">
+      <p>MY CAR MANAGER 2023</p>
+      <img th:src="@{/static/img/car.png}" width="150px" height="80px" />
+    </div>
+  </header>
+  <nav class="main" th:fragmaent="nav">
+    <ul>
+      <li class="home">Home</li>
+      <li class="mycar">내차등록</li>
+      <li class="tacho">차량운행</li>
+
+      <li class="login">로그인</li>
+      <li class="join">회원가입</li>
+
+      <li class="logout">로그아웃</li>
+      <li class="mypage">마이페이지</li>
+    </ul>
+  </nav>
+  <footer th:fragmaent="footer">
+    <address>CopyRight &copy; addong@addong.com All Right Reserved</address>
+  </footer>
+</html>

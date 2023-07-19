@@ -42,7 +42,7 @@
 		</ul>
 	</nav>
 	<section class="main">
-		<%@ include file="/WEB-INF/views/car/input.jsp" %>	
+		<%@ include file="/WEB-INF/views/jsp/car/input.jsp" %>	
 	</section>
 	<footer>
 		<address>CopyRight &copy; addong@addong.com All Right
