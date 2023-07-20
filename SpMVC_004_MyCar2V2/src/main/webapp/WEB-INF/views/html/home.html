@@ -25,13 +25,14 @@
     </script>
     <script th:src="@{/static/js/main_input_validation.js}"></script>
     <script th:src="@{/static/js/main_input.js}"></script>
+    <script th:src="@{/static/js/main_nav.js}"></script>
   </head>
-  <body>
-    <header th:replace="~{include :: header}" />
-    <nav th:replace="~{include :: nav}" />
+  <body th:with="LOGIN = ${session.LOGINUSER}">
+    <header th:replace="~{include :: header}"></header>
+    <nav th:replace="~{include :: nav}"></nav>
     <section class="main" layout:fragment="content">
       <h1>Body Main</h1>
     </section>
-    <footer th:replace="~{include :: footer}" />
+    <footer th:replace="~{include :: footer}"></footer>
   </body>
 </html>

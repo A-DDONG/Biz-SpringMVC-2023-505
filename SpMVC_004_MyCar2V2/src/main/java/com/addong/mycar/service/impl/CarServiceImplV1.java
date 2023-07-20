@@ -2,6 +2,7 @@ package com.addong.mycar.service.impl;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.addong.mycar.models.CarDto;
@@ -30,6 +31,11 @@ public class CarServiceImplV1 implements CarService {
 	@Override
 	public List<CarDto> selectAll() {
 		return carDao.selectAll();
+	}
+	
+	@Autowired
+	public void create_table() {
+		carDao.create_carm_table(null);
 	}
 
 }

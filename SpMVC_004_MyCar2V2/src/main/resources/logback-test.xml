@@ -27,7 +27,15 @@ logback 은 src/main/resources 폴더에서 logback-test.xml, logback.xml, logba
     <logger name="org.springframework" level="INFO" />
 	
 	<!-- 현재 프로젝트(com.addong.mycar base-package 에서 출력하기) -->    
-    <logger name="com.addong.mycar" level="DEBUG"  additivity="false">
+    <logger name="com.addong.mycar.controller" level="DEBUG"  additivity="false">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    
+    <logger name="com.addong.mycar.service" level="DEBUG"  additivity="false">
+        <appender-ref ref="STDOUT"/>
+    </logger>
+    
+    <logger name="com.addong.mycar.persistance" level="DEBUG"  additivity="false">
         <appender-ref ref="STDOUT"/>
     </logger>
 
