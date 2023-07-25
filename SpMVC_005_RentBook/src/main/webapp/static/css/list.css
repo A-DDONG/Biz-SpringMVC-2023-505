@@ -4,24 +4,24 @@
   font-family: "yg-jalnan";
   margin-top: 30px;
 }
-table.book {
+table.list {
   text-align: center;
   margin: 0 auto;
   width: 60%;
   margin: 10px auto;
   border-collapse: collapse;
 }
-table.book tr {
+table.list tr {
   width: 80%;
 }
-table.book th,
-table.book td {
+table.list th,
+table.list td {
   padding: 0.8rem;
 }
-table.book tr:nth-of-type(odd) {
+table.list tr:nth-of-type(odd) {
   background-color: #efefef;
 }
-table.book tr:nth-of-type(even) {
+table.list tr:nth-of-type(even) {
   background-color: #dfdfdf;
 }
 a {
@@ -43,7 +43,7 @@ a:active {
   font-weight: bold;
   border-bottom: 2px solid blue;
 }
-div.book.button {
+div.list.button {
   text-align: right;
   width: 80%;
 }

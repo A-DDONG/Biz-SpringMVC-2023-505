@@ -12,7 +12,7 @@
 </head>
 <body>
 	<h1 class="list_title">도서정보관리</h1>
-	<table class="book">
+	<table class="list book">
 		<tr>
 			<th>도서코드</th>
 			<th>도서명</th>
@@ -40,7 +40,7 @@
 			</c:otherwise>
 		</c:choose>
 	</table>
-	<div class="book button">
+	<div class="list book button">
 		<a href="${rootPath}/">처음으로</a> <a href="${rootPath}/book/insert">도서정보
 			추가</a>
 	</div>

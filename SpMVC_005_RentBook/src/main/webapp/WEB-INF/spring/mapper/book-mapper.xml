@@ -31,6 +31,6 @@
 			B_YEAR INT NOT NULL,
 			B_IPRICE INT,
 			B_RPRICE INT NOT NULL
-		);
+		)
 	</select>
 </mapper> 

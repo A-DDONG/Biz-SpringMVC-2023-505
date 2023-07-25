@@ -8,6 +8,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="${rootPath}/static/css/main.css" rel="stylesheet" />
+<link href="${rootPath}/static/css/input.css" rel="stylesheet" />
 </head>
 <body>
 	<h1>도서정보 ${STATE == 'UPDATE' ? '수정' : '추가' }</h1>
