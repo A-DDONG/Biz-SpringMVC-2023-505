@@ -1,0 +1,49 @@
+@charset "UTF-8";
+.list_title {
+  text-align: center;
+  font-family: "yg-jalnan";
+  margin-top: 30px;
+}
+table.list {
+  text-align: center;
+  margin: 0 auto;
+  width: 60%;
+  margin: 10px auto;
+  border-collapse: collapse;
+}
+table.list tr {
+  width: 80%;
+}
+table.list th,
+table.list td {
+  padding: 0.8rem;
+}
+table.list tr:nth-of-type(odd) {
+  background-color: #efefef;
+}
+table.list tr:nth-of-type(even) {
+  background-color: #dfdfdf;
+}
+a {
+  text-decoration: none;
+  color: black;
+}
+a:visited {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: none;
+}
+a:focus {
+  text-decoration: none;
+}
+a:hover,
+a:active {
+  color: blue;
+  font-weight: bold;
+  border-bottom: 2px solid blue;
+}
+div.list.button {
+  text-align: right;
+  width: 80%;
+}

@@ -45,17 +45,4 @@ CREATE TABLE tbl_rent_book (
 	RENT_POINT	INT,			
 	RENT_PRICE	INT			
 );
-SELECT * FROM tbl_rent_book;
 DESC tbl_rent_book;
-TRUNCATE TABLE tbl_rent_book;
-
-SELECT COUNT(*) FROM tbl_books;
-SELECT * FROM tbl_books LIMIT 10;
-
-SELECT COUNT(*) FROM tbl_members;
-
-SELECT * FROM tbl_rent_book R
-LEFT JOIN tbl_members M
-	ON R.rent_mcode = M.m_code
-LEFT JOIN tbl_books B
-	ON R.rent_bcode = B.b_code;
