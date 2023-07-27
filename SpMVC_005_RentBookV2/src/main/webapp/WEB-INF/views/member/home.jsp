@@ -12,6 +12,10 @@
 </head>
 <body>
 	<h1 class="list_title">멤버관리</h1>
+	<div class="list member button">
+		<a href="${rootPath}/">처음으로</a> <a href="${rootPath}/member/insert">회원정보
+			추가</a>
+	</div>
 	<table class="list member">
 		<tr>
 			<th>회원코드</th>
@@ -28,10 +32,7 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<div class="list member button">
-		<a href="${rootPath}/">처음으로</a> <a href="${rootPath}/member/insert">회원정보
-			추가</a>
-	</div>
+
 
 </body>
 </html>

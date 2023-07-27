@@ -12,6 +12,11 @@
 </head>
 <body>
 	<h1 class="list_title">도서대여 처리</h1>
+	<div class="list rent button">
+		<a href="${rootPath}/">처음으로</a>
+		<a href="${rootPath}/rent/insert">도서대여</a>
+		<a href="${rootPath}/rent/return">도서반납</a>
+	</div>
 	<table class="list rent">
 		<tr>
 			<th>도서코드</th>
@@ -45,10 +50,6 @@
 			</tr>
 		</c:forEach>
 	</table>
-	<div class="list rent button">
-		<a href="${rootPath}/">처음으로</a>
-		<a href="${rootPath}/rent/insert">도서대여</a>
-		<a href="${rootPath}/rent/return">도서반납</a>
-	</div>
+
 </body>
 </html>

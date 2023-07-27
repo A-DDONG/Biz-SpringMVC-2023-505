@@ -2,12 +2,15 @@ package com.addong.rent.service;
 
 import java.util.List;
 
+import org.springframework.ui.Model;
+
 import com.addong.rent.models.BookDto;
 
 public interface BookService {
 	
 	
 	public List<BookDto> selectAll();
+	public List<BookDto> selectPage(String page);
 
 	public int insert(BookDto bookDto);
 
@@ -16,5 +19,8 @@ public interface BookService {
 	public int update(BookDto bookDto);
 
 	public List<BookDto> findByBName(String bname);
+	public void selectPage(String page, Model model);
+	public void selectPage(String page, Model model, String search);
+
 	
 }

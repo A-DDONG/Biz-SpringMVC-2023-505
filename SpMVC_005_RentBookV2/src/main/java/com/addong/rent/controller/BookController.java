@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import com.addong.rent.models.BookDto;
 import com.addong.rent.service.BookService;
 
-import lombok.Getter;
 import lombok.extern.slf4j.Slf4j;
 
 /*
@@ -32,80 +31,90 @@ public class BookController {
 	}
 
 	@RequestMapping(value = { "/", "" }, method = RequestMethod.GET)
-	public String home(Model model) {
-		
-		List<BookDto> books = bookService.selectAll();
-		model.addAttribute("BOOKS",books);
+	public String home(@RequestParam(name = "page", required = false, defaultValue = "1") String page,
+			@RequestParam(name = "search", required = false, defaultValue = "-1") String search, Model model) {
+
+//		List<BookDto> books = bookService.selectAll();
+//		List<BookDto> books = bookService.selectPage(page);
+		if(search.equals("-1")) {
+			bookService.selectPage(page, model);			
+		} else {
+			bookService.selectPage(page, model, search);
+		}
+//		model.addAttribute("BOOKS",books);
+		model.addAttribute("SEARCH",search);
 		return "book/home";
 	}
-	
+
 	// 도서정보 입력화면을 보여달라
-	@RequestMapping(value="/insert",method=RequestMethod.GET)
+	@RequestMapping(value = "/insert", method = RequestMethod.GET)
 	public String insert(@ModelAttribute("BOOK") BookDto bookDto) {
 		return "book/input";
 	}
-	
-	@RequestMapping(value="/insert", method=RequestMethod.POST)
+
+	@RequestMapping(value = "/insert", method = RequestMethod.POST)
 	public String insert(@ModelAttribute("BOOK") BookDto bookDto, Model model) {
-		
+
 		log.debug("전달된 데이터 {}", bookDto);
 		int result = bookService.insert(bookDto);
 		return "redirect:/book";
 	}
-	
-	@RequestMapping(value="/{bcode}/detail",method=RequestMethod.GET)
+
+	@RequestMapping(value = "/{bcode}/detail", method = RequestMethod.GET)
 	public String detail(@PathVariable("bcode") String bcode, Model model) {
-		
+
 		BookDto bookDto = bookService.findById(bcode);
-		model.addAttribute("BOOK",bookDto);
+		model.addAttribute("BOOK", bookDto);
 		return "book/detail";
 	}
-	
-	@RequestMapping(value="/{bcode}/update",method=RequestMethod.GET)
+
+	@RequestMapping(value = "/{bcode}/update", method = RequestMethod.GET)
 	public String update(@PathVariable("bcode") String bcode, Model model) {
-		
+
 		BookDto bookDto = bookService.findById(bcode);
-		model.addAttribute("BOOK",bookDto);
-		model.addAttribute("STATE","UPDATE");
+		model.addAttribute("BOOK", bookDto);
+		model.addAttribute("STATE", "UPDATE");
 		return "book/input";
 	}
-	
-	@RequestMapping(value="/{bcode}/update",method=RequestMethod.POST)
+
+	@RequestMapping(value = "/{bcode}/update", method = RequestMethod.POST)
 	public String update(@PathVariable("bcode") String bcode, @ModelAttribute("BOOK") BookDto bookDto, Model model) {
-		if(!bcode.isBlank()) bookDto.setB_code(bcode);
+		if (!bcode.isBlank())
+			bookDto.setB_code(bcode);
 		int result = bookService.update(bookDto);
 		return String.format("redirect:/book/%s/detail", bcode);
 	}
-	
+
 	/*
-	 * 만약 Req 를 하면서 num 변수에 값을 포함하여 보낼때 문자열, "", 아무것도 없는 값을 전달하면
-	 * 서버는 400 오류가 발생한다 400 오류를 방지하려면 num=0 이라도 최소한 전달해야 한다
+	 * 만약 Req 를 하면서 num 변수에 값을 포함하여 보낼때 문자열, "", 아무것도 없는 값을 전달하면 서버는 400 오류가 발생한다
+	 * 400 오류를 방지하려면 num=0 이라도 최소한 전달해야 한다
 	 */
 	// param?num=000
 	@ResponseBody
-	@RequestMapping(value="/param", method=RequestMethod.GET)
+	@RequestMapping(value = "/param", method = RequestMethod.GET)
 	public String paramTest(@RequestParam(name = "num", required = false, defaultValue = "0") int num) {
 		return num + "";
 	}
-	
+
 	@ResponseBody
-	@RequestMapping(value="/name/search", method=RequestMethod.GET, produces = "application/json;charset=UTF-8")
-	public List<BookDto> bNameSearch(@RequestParam(name = "b_name", required = false, defaultValue = "-1") String bname) {
-		
-		if(bname.equals("-1")) {
-			return null;			
+	@RequestMapping(value = "/name/search", method = RequestMethod.GET, produces = "application/json;charset=UTF-8")
+	public List<BookDto> bNameSearch(
+			@RequestParam(name = "b_name", required = false, defaultValue = "-1") String bname) {
+
+		if (bname.equals("-1")) {
+			return null;
 		}
-		
-		log.debug("받은 도서 명 {} ",bname);	
-		
+
+		log.debug("받은 도서 명 {} ", bname);
+
 		List<BookDto> bookList = bookService.findByBName(bname);
-		
+
 		return bookList;
 	}
+
 	/*
-	 * @ModelAttribute("BOOK") 이라는 선언이 있는 매개변수가 발견되거든
-	 * BookDto bookDto 객체에 데이터가 있는지 확인하고
-	 * 만약 null 값이면 새로운 BookDto 객체를 생성하여 주입하라
+	 * @ModelAttribute("BOOK") 이라는 선언이 있는 매개변수가 발견되거든 BookDto bookDto 객체에 데이터가 있는지
+	 * 확인하고 만약 null 값이면 새로운 BookDto 객체를 생성하여 주입하라
 	 * 
 	 */
 	@ModelAttribute("BOOK")
