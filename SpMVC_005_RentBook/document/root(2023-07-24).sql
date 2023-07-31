@@ -59,3 +59,14 @@ LEFT JOIN tbl_members M
 	ON R.rent_mcode = M.m_code
 LEFT JOIN tbl_books B
 	ON R.rent_bcode = B.b_code;
+
+-- 전체 데이터 중에서 5페이지에서 10개를 보고 싶다
+-- 전제 데이터 중 1페이지에서 10개 : 0 ~ 9번까지 보여주기
+-- 1페이지일 경우 시작값 1이 될려면 (Page - 1 ) * 10
+-- 전제 데이터 중 1페이지에서 10개 : 10 ~ 19번까지
+-- 2페이지일 경우 시작값이 10이 되려면 (page - 1) * 10
+    
+-- 처음 시작에서 10개를 건너뛰고 : OFFSET 10
+-- 그 위치부터 10개를 SELECT 하라
+SELECT * FROM tbl_books
+ORDER BY B_CODE LIMIT 10 OFFSET 10;
