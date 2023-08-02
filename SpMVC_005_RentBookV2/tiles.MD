@@ -14,3 +14,33 @@
 		</dependency>
 	</dependencies>
 ```
+
+## InternalResourceViewResolver 와 협력관계 설정
+- tiles-context.xml 설정파일을 appServlet 폴더에 생성한다
+```xml
+	<bean id="tilesConfigurer"
+		class="org.springframework.web.servlet.view.tiles3.TilesConfigurer">
+		<property name="definitions">
+			<list>
+				<value>/WEB-INF/spring/tiles-layout/*-layout.xml</value>
+			</list>
+		</property>
+	</bean>
+	
+	
+	<bean class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass" value="TilesView"></property>
+		<property name="order" value="1" />
+	</bean>
+```
+- layout.xml 파일 생성
+```xml
+  <tiles-definitions>
+  	<definition name="default" template="/WEB-INF/views/home.jsp">
+  		
+  	</definition>
+  	<definition name="home" extends="default">
+  	
+  	</definition>
+  </tiles-definitions>
+```
